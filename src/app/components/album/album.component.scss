@@ -1,0 +1,24 @@
+.album {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #4F6D7A;
+    border-radius: 8px;
+    margin: 20px 0 0 0;
+    padding: 10px;
+    
+    &__title {
+        margin: 0;
+        color: #1E1E1E;
+    }
+
+    &__artist {
+        margin: 10px 0 0 0;
+        color: #1E1E1E;
+    }
+
+    &__image {
+        margin: 10px 0;
+        border: 1px solid grey;
+    }
+}
