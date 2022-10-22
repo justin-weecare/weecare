@@ -14,4 +14,8 @@ export class AlbumComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  openModal() {
+    
+  }
 }

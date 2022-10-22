@@ -1,3 +1,5 @@
+@import '../../../css/breakpoints';
+
 .album {
     display: flex;
     flex-direction: column;
@@ -6,15 +8,31 @@
     border-radius: 8px;
     margin: 20px 0 0 0;
     padding: 10px;
-    
+    height: 280px;
+    cursor: pointer;
+    transition: all 500ms ease-in-out;
+    color: #1E1E1E;
+
+    @include tablet-up() {
+        display: inline-flex;
+        width: 300px;
+        margin-left: 20px;
+    }
+
+    &:hover {
+        border-color: #DB504A;
+        background-color: #DB504A;
+        color: #FFFFFF;
+    }
+
     &__title {
+        text-align: center;
         margin: 0;
-        color: #1E1E1E;
     }
 
     &__artist {
+        text-align: center;
         margin: 10px 0 0 0;
-        color: #1E1E1E;
     }
 
     &__image {
