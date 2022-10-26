@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { Album } from '../album/album.types';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-album-detail-modal',
@@ -9,13 +10,20 @@ import { Album } from '../album/album.types';
 })
 export class AlbumDetailModalComponent {
   @Input() album: Album | undefined;
-  @Input() visible = false;
+  modalName = 'albumDetail';
+
+  constructor(private modalService: ModalService) {}
+
+  get visible(): boolean {
+    return this.modalService.modals[this.modalName]['visible'];
+  }
 
   get albumReleaseDate(): string {
     if (!this.album) return '';
     return new Date(this.album?.releaseDate).toLocaleDateString();
   }
+
   closeModal() {
-    this.visible = false;
+    this.modalService.setVisibility(this.modalName, false);
   }
 }

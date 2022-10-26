@@ -10,5 +10,5 @@
     <app-album *ngFor="let album of filteredAlbums" [album]="album" (click)="onClickAlbum(album)"></app-album>
     <p *ngIf="filteredAlbums.length === 0">No albums found. Try another search term.</p>
   </div>
-  <app-album-detail-modal [album]="selectedAlbum" [visible]="isModalVisible"></app-album-detail-modal>
+  <app-album-detail-modal [album]="selectedAlbum"></app-album-detail-modal>
 </main>
