@@ -6,7 +6,7 @@
     [(ngModel)]="searchString"
     (ngModelChange)="onSearchStringChange()"
   >
-  <div class="container">
+  <div class="container" [class.overflow-hidden]="isModalVisible">
     <app-album *ngFor="let album of filteredAlbums" [album]="album" (click)="onClickAlbum(album)"></app-album>
     <p *ngIf="filteredAlbums.length === 0">No albums found. Try another search term.</p>
   </div>
