@@ -3,5 +3,6 @@
   <input type="text" placeholder="Search..." [(ngModel)]="searchString" (ngModelChange)="onSearchStringChange()">
   <div class="container">
     <app-album *ngFor="let album of filteredAlbums" [album]="album"></app-album>
+    <p *ngIf="filteredAlbums.length === 0">No albums found. Try another search term.</p>
   </div>
 </main>
