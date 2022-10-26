@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { debounce } from 'lodash';
 
 import { Album } from './components/album/album.types';
+import { AlbumService } from './services/album.service';
 
 @Component({
   selector: 'app-root',
@@ -19,30 +20,11 @@ export class AppComponent implements OnInit {
   }, 200);
   isModalVisible = false;
 
-  async ngOnInit(): Promise<void> {
-    await this.fetchData();
-  }
+  constructor(private albumService: AlbumService) { }
 
-  async fetchData() {
-    try {
-      let response = await fetch('https://itunes.apple.com/us/rss/topalbums/limit=100/json');
-      if (response.ok) {
-        this.albums = (await response.json() as any).feed.entry.map((album: any) => {
-          return {
-            title: album['im:name'].label,
-            imageUrl: album['im:image'][album['im:image'].length - 1].label,
-            artist: album['im:artist'].label,
-            price: album['im:price'].label,
-            itemCount: album['im:itemCount'].label,
-            rights: album.rights.label,
-            releaseDate: album['im:releaseDate'].label,
-          };
-        });
-        this.filteredAlbums = this.albums;
-      }
-    } catch (e) {
-      console.error(e);
-    }
+  async ngOnInit(): Promise<void> {
+    this.albums = await this.albumService.getAlbums();
+    this.filteredAlbums = this.albums;
   }
 
   onClickAlbum(album: Album) {
