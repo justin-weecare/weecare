@@ -10,4 +10,12 @@ import { Album } from '../album/album.types';
 export class AlbumDetailModalComponent {
   @Input() album: Album | undefined;
   @Input() visible = false;
+
+  get albumReleaseDate(): string {
+    if (!this.album) return '';
+    return new Date(this.album?.releaseDate).toLocaleDateString();
+  }
+  closeModal() {
+    this.visible = false;
+  }
 }
