@@ -1,0 +1,12 @@
+<div *ngIf="visible" class="modal">
+    <div class="modal__header">
+        <h4 class="modal__album-title">{{ album?.title }}</h4>
+        <p class="modal__album-artist">{{ album?.artist }}</p>
+    </div>
+    <div class="modal__body">
+        <img class="album__image" [src]="album?.imageUrl" alt="Album Art">
+        <p>{{ album?.price }}</p>
+        <p>{{ album?.itemCount }}</p>
+        <p>{{ album?.releaseDate }}</p>
+    </div>
+</div>

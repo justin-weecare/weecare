@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Album } from '../album/album.types';
 
@@ -7,12 +7,7 @@ import { Album } from '../album/album.types';
   templateUrl: './album-detail-modal.component.html',
   styleUrls: ['./album-detail-modal.component.scss']
 })
-export class AlbumDetailModalComponent implements OnInit {
+export class AlbumDetailModalComponent {
   @Input() album: Album | undefined;
   @Input() visible = false;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 }

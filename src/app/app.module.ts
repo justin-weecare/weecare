@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AlbumComponent } from './components/album/album.component';
+import { AlbumDetailModalComponent } from './components/album-detail-modal/album-detail-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlbumComponent,
+    AlbumDetailModalComponent,
   ],
   imports: [
     BrowserModule,

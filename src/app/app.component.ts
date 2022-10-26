@@ -11,11 +11,13 @@ import { Album } from './components/album/album.types';
 export class AppComponent implements OnInit {
   albums: Album[] = [];
   filteredAlbums: Album[] = [];
+  selectedAlbum: Album | undefined;
   searchString = '';
   onSearchStringChange = debounce(() => {
     const searchString = this.searchString.trim().toLowerCase();
     this.filteredAlbums = this.albums.filter(album => album.title.toLowerCase().includes(searchString) || album.artist.toLowerCase().includes(searchString));
   }, 200);
+  isModalVisible = false;
 
   async ngOnInit(): Promise<void> {
     await this.fetchData();
@@ -41,5 +43,10 @@ export class AppComponent implements OnInit {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  onClickAlbum(album: Album) {
+    this.selectedAlbum = album;
+    this.isModalVisible = true;
   }
 }
