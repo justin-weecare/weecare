@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { debounce } from 'lodash';
 
 import { Album } from './components/album/album.types';
 
@@ -10,6 +11,11 @@ import { Album } from './components/album/album.types';
 export class AppComponent implements OnInit {
   albums: Album[] = [];
   filteredAlbums: Album[] = [];
+  searchString = '';
+  onSearchStringChange = debounce(() => {
+    const searchString = this.searchString.trim().toLowerCase();
+    this.filteredAlbums = this.albums.filter(album => album.title.toLowerCase().includes(searchString) || album.artist.toLowerCase().includes(searchString));
+  }, 200);
 
   async ngOnInit(): Promise<void> {
     await this.fetchData();

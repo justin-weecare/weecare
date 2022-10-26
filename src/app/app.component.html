@@ -1,5 +1,6 @@
 <main>
   <h1 class="header">Top 100 Albums</h1>
+  <input type="text" placeholder="Search..." [(ngModel)]="searchString" (ngModelChange)="onSearchStringChange()">
   <div class="container">
     <app-album *ngFor="let album of filteredAlbums" [album]="album"></app-album>
   </div>
